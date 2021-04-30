@@ -10,7 +10,7 @@ import { HttpService } from '../service/http.service';
 })
 export class MovieListComponent implements OnInit {
 
-  movies$: Observable<Movie[]>;
+  movies$: Observable<Movie[]> = this.movieService.getMovieList();
 
   constructor(
     private movieService: HttpService,
