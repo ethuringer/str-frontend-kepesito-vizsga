@@ -1,4 +1,4 @@
-<section class="container-md">
+<section class="container-md py-4">
   <form #mForm="ngForm">
     <div class="form-group">
       <label class="text-warning" for="title">Movie Title:</label>
@@ -7,13 +7,26 @@
     </div>
     <div class="row">
       <div class="form-group col-6">
-
+        <label class="text-warning" for="year">Release year:</label>
+        <input id="year" type="text" class="form-control"
+          required pattern="" name="title" [(ngModel)]="movie.year">
       </div>
       <div class="form-group col-6">
-
+        <label class="text-warning" for="category">Example select</label>
+    <select class="form-control" id="category">
+      <option>Choose Category</option>
+      <option>Drama</option>
+      <option>Action</option>
+      <option>Fantasy</option>
+    </select>
       </div>
     </div>
-
+      <button [disabled]="mForm.invalid" type="submit" class="btn btn-warning">
+        Save
+      </button>
+      <div>
+      <small class="text-danger">Fill all field to save!</small>
+    </div>
   </form>
 
 
