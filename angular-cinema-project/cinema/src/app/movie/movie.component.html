@@ -1,31 +1,40 @@
 <section class="container-md py-4">
-  <form #mForm="ngForm">
+  <form #mForm="ngForm" ngSubmit="saveMovie(mForm)">
     <div class="form-group">
       <label class="text-warning" for="title">Movie Title:</label>
       <input id="title" type="text" class="form-control"
-        required pattern="" name="title" [(ngModel)]="movie.title">
+        required pattern="^[a-űA-Ű ]{5,25}$" name="title" [(ngModel)]="movie.title">
+        <div [hidden]="mForm.controls.title?.valid || mForm.controls.title?.pristine" class="error-message">
+          Title is required and must be minimum 5 and maximum 25 characters.
+        </div>
     </div>
     <div class="row">
       <div class="form-group col-6">
         <label class="text-warning" for="year">Release year:</label>
         <input id="year" type="text" class="form-control"
-          required pattern="" name="title" [(ngModel)]="movie.year">
+          required pattern="^(19[0-9]{2})|(20([0-1][0-9]|2[0-1]))$" name="year" [(ngModel)]="movie.year">
+          <div [hidden]="mForm.controls.year?.valid || mForm.controls.year?.pristine" class="error-message">
+            Year is required and must be between 1900-2021.
+          </div>
       </div>
       <div class="form-group col-6">
         <label class="text-warning" for="category">Example select</label>
-    <select class="form-control" id="category">
-      <option>Choose Category</option>
+    <select class="form-control" id="category" required>
+      <option disabled selected>Choose Category</option>
       <option>Drama</option>
       <option>Action</option>
       <option>Fantasy</option>
     </select>
+    <div [hidden]="mForm.controls.category?.valid || mForm.controls.category?.pristine" class="error-message">
+      Category must be selected.
+    </div>
       </div>
     </div>
       <button [disabled]="mForm.invalid" type="submit" class="btn btn-warning">
         Save
       </button>
       <div>
-      <small class="text-danger">Fill all field to save!</small>
+      <small class="text-danger" [hidden]="mForm.valid">Fill all field to save!</small>
     </div>
   </form>
 

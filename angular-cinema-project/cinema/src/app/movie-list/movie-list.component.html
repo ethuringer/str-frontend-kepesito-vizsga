@@ -10,7 +10,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table-row"></tr>
+          <tr *ngFor="let movie of movies$ | async" class="table-row">
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.year }}</td>
+            <td>{{ movie.category }}</td>
+          </tr>
         </tbody>
     </table>
 </section>

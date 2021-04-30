@@ -2,3 +2,8 @@
     background-color: rgb(53, 53, 50);
     border-radius: 12px;
 }
+
+.error-message {
+    color:rgb(221, 5, 41);
+    font-size: .75rem;
+}
